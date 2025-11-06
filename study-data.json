@@ -1,0 +1,232 @@
+{
+  "modules": [
+    {
+      "id": 1,
+      "name": "Financial Statement Analysis",
+      "questions": [
+        {
+          "id": "m1q1",
+          "question": "What is the purpose of conducting financial statement analysis?",
+          "answer": "Financial statement analysis helps stakeholders evaluate a company's financial performance, assess its financial health, and make informed decisions regarding investments, operations, and strategic planning.",
+          "distractors": [
+            "Financial statement analysis is primarily used to calculate tax obligations and ensure compliance with IRS regulations for corporate entities.",
+            "Financial statement analysis focuses on evaluating employee performance metrics and determining appropriate compensation structures for management.",
+            "Financial statement analysis helps companies prepare marketing materials and promotional content to attract new customers and increase brand awareness."
+          ]
+        },
+        {
+          "id": "m1q2",
+          "question": "What is horizontal and trend analysis, and how is it performed?",
+          "answer": "Horizontal analysis compares financial data over different periods to identify trends and changes in performance. Trend analysis extends this by examining patterns over time to predict future performance.",
+          "distractors": [
+            "Horizontal analysis compares line items within a single period as percentages of a base figure. Trend analysis examines the same data but focuses on industry benchmarks rather than time periods.",
+            "Horizontal analysis evaluates the relationship between different financial statement items at a point in time. Trend analysis compares these relationships across multiple companies in the same industry.",
+            "Horizontal analysis measures financial data against industry standards to assess competitive position. Trend analysis tracks changes in market share and customer acquisition over time."
+          ]
+        },
+        {
+          "id": "m1q3",
+          "question": "How is vertical analysis conducted?",
+          "answer": "Vertical analysis involves expressing each line item in financial statements as a percentage of a base figure, such as total assets or sales, to assess the relative size of each item within the financial structure.",
+          "distractors": [
+            "Vertical analysis involves comparing each line item across multiple time periods to identify growth patterns and calculate year-over-year percentage changes in financial performance.",
+            "Vertical analysis involves calculating financial ratios by dividing related line items to assess liquidity, profitability, and solvency relative to industry benchmarks.",
+            "Vertical analysis involves ranking line items from largest to smallest within each financial statement to prioritize areas requiring management attention and resource allocation."
+          ]
+        },
+        {
+          "id": "m1q4",
+          "question": "What is ratio analysis, and why is it important in financial statement analysis?",
+          "answer": "Ratio analysis involves calculating financial ratios from a company's financial statements to evaluate its performance, liquidity, profitability, and solvency. It helps stakeholders compare the company's financial health against industry standards or previous periods.",
+          "distractors": [
+            "Ratio analysis involves expressing each financial statement line item as a percentage of total revenue to evaluate operational efficiency. It helps stakeholders assess the relative size of expenses and identify cost reduction opportunities.",
+            "Ratio analysis involves comparing current period financial data to prior periods to identify trends and growth patterns. It helps stakeholders predict future performance and make strategic planning decisions.",
+            "Ratio analysis involves calculating the percentage change in key financial metrics over time to measure company growth. It helps stakeholders evaluate management effectiveness and competitive market position."
+          ]
+        },
+        {
+          "id": "m1q5",
+          "question": "What are some 'red flags' in financial statement analysis?",
+          "answer": "Warning signals include inconsistencies between statements, rapid changes in key ratios, unexplained losses or gains, excessive debt, and unusual changes in cash flow patterns.",
+          "distractors": [
+            "Warning signals include consistent growth in revenue and profits, stable debt-to-equity ratios, predictable cash flow patterns, and financial metrics that align with industry averages.",
+            "Warning signals include high liquidity ratios, strong working capital positions, increasing profit margins, conservative debt levels, and positive trends in all key performance indicators.",
+            "Warning signals include declining revenue but increasing net income, improving ratios despite market downturns, consistent cash flow with volatile earnings, and financial metrics significantly better than industry peers."
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Managerial Cost Concepts",
+      "questions": [
+        {
+          "id": "m2q1",
+          "question": "What is cost-volume-profit (CVP) analysis, and how does it relate to the break-even point (BEP)?",
+          "answer": "CVP analysis examines how changes in costs and volume affect a company's operating income. The break-even point is the level of sales at which total revenues equal total costs, resulting in no profit or loss.",
+          "distractors": [
+            "CVP analysis examines how changes in pricing and market demand affect gross profit margins. The break-even point is the sales level where variable costs equal fixed costs, maximizing operational efficiency.",
+            "CVP analysis examines the relationship between product costs and period costs in determining net income. The break-even point is where total assets equal total liabilities, indicating financial stability.",
+            "CVP analysis examines how inventory levels and production volume impact cash flow. The break-even point is the production level where economies of scale begin, reducing per-unit costs."
+          ]
+        },
+        {
+          "id": "m2q2",
+          "question": "How do you prepare a projected income statement?",
+          "answer": "A projected income statement forecasts future revenues and expenses based on assumptions about sales volume, pricing, and costs. It helps managers plan for profitability and financial health.",
+          "distractors": [
+            "A projected income statement analyzes historical revenues and expenses to identify trends and calculate growth rates. It helps managers understand past performance and benchmark against competitors.",
+            "A projected income statement allocates current period revenues and expenses across future periods using accrual accounting. It helps managers smooth earnings and reduce tax obligations.",
+            "A projected income statement adjusts actual revenues and expenses for inflation and market conditions. It helps managers restate historical data for comparative analysis purposes."
+          ]
+        },
+        {
+          "id": "m2q3",
+          "question": "What are product and period costs, and how are they different?",
+          "answer": "Product costs are associated with the production of goods, including direct materials, direct labor, and manufacturing overhead. These costs are capitalized as inventory until the goods are sold. Period costs, on the other hand, are non-production costs such as selling, general, and administrative expenses, which are expensed in the period they are incurred.",
+          "distractors": [
+            "Product costs are variable costs that change with production volume, including raw materials and hourly wages. Period costs are fixed costs that remain constant, such as rent and insurance, regardless of production levels.",
+            "Product costs are direct costs that can be traced to specific units, including materials and labor. Period costs are indirect costs that cannot be traced to units, such as overhead and utilities, and are allocated using cost drivers.",
+            "Product costs are expenses recorded on the income statement when incurred, including manufacturing and distribution costs. Period costs are capitalized on the balance sheet as assets until products are sold to customers."
+          ]
+        },
+        {
+          "id": "m2q4",
+          "question": "What are direct and indirect costs, and how are they classified?",
+          "answer": "Direct costs can be directly traced to a specific product, department, or project, such as direct labor and materials. Indirect costs, like overhead, cannot be directly traced to a single product or service and are allocated across multiple areas, including utilities and rent.",
+          "distractors": [
+            "Direct costs are product costs that are capitalized as inventory until goods are sold, such as manufacturing expenses. Indirect costs are period costs that are expensed immediately, including selling and administrative expenses.",
+            "Direct costs are variable costs that change proportionally with activity levels, such as raw materials. Indirect costs are fixed costs that remain constant regardless of production volume, such as supervisory salaries.",
+            "Direct costs are costs incurred in the current accounting period and recorded on the income statement. Indirect costs are future costs that are estimated and accrued on the balance sheet as liabilities."
+          ]
+        },
+        {
+          "id": "m2q5",
+          "question": "What are variable, fixed, and mixed costs?",
+          "answer": "Variable costs change in proportion to business activity levels, such as raw materials or sales commissions. Fixed costs, like rent and salaries, remain constant regardless of production levels over a specific period. Mixed costs include both a variable and fixed component.",
+          "distractors": [
+            "Variable costs are indirect costs that cannot be traced to specific products and must be allocated. Fixed costs are direct costs that can be traced to products. Mixed costs are period costs expensed when incurred.",
+            "Variable costs are product costs capitalized as inventory until goods are sold. Fixed costs are period costs expensed in the current period. Mixed costs are costs that vary between product and period classification.",
+            "Variable costs remain constant per unit but change in total with activity. Fixed costs change per unit but remain constant in total. Mixed costs remain constant both per unit and in total."
+          ]
+        },
+        {
+          "id": "m2q6",
+          "question": "What is gross profit, and how is it calculated?",
+          "answer": "Gross profit is the difference between a company's revenue and its cost of goods sold (COGS). It indicates how efficiently a company produces or provides its goods and services. Gross profit is calculated as: Gross Profit = Revenue - COGS.",
+          "distractors": [
+            "Gross profit is the difference between a company's revenue and its total operating expenses including COGS and period costs. It indicates overall profitability. Gross profit is calculated as: Gross Profit = Revenue - Total Expenses.",
+            "Gross profit is the difference between a company's revenue and its variable costs. It represents contribution margin available to cover fixed costs. Gross profit is calculated as: Gross Profit = Revenue - Variable Costs.",
+            "Gross profit is the difference between a company's sales revenue and its direct costs only, excluding manufacturing overhead. It measures production efficiency. Gross profit is calculated as: Gross Profit = Revenue - Direct Costs."
+          ]
+        },
+        {
+          "id": "m2q7",
+          "question": "What types of costs are included in calculating the cost of goods sold (COGS)?",
+          "answer": "COGS includes all direct costs related to the production of goods, such as direct labor, direct materials, and allocated manufacturing overhead; in other words, product costs. Indirect costs like administrative expenses are not included in COGS.",
+          "distractors": [
+            "COGS includes all variable costs that change with production volume, such as raw materials and hourly wages. Fixed costs like rent and salaries are excluded from COGS and treated as period expenses.",
+            "COGS includes direct materials and direct labor only. Manufacturing overhead and indirect costs are excluded from COGS and expensed separately as operating expenses on the income statement.",
+            "COGS includes all costs incurred during the period, including production costs, selling expenses, and administrative costs. These total costs are matched against revenue to determine net income."
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Business Strategy and Financial Projections",
+      "questions": [
+        {
+          "id": "m3q1",
+          "question": "How can a company's core capabilities influence its business strategy?",
+          "answer": "Core capabilities such as technology, talent, and market positioning shape a company's business strategy by determining its competitive advantage and ability to meet consumer demands.",
+          "distractors": [
+            "Core capabilities such as financial reserves, physical assets, and inventory levels shape a company's business strategy by determining its liquidity position and ability to meet short-term obligations.",
+            "Core capabilities such as marketing budgets, advertising reach, and brand recognition shape a company's business strategy by determining its market share and ability to attract new customers.",
+            "Core capabilities such as organizational structure, reporting hierarchies, and management processes shape a company's business strategy by determining its operational efficiency and cost control measures."
+          ]
+        },
+        {
+          "id": "m3q2",
+          "question": "Why is it important to analyze the wants and needs of a company's consumer groups?",
+          "answer": "Understanding consumer needs helps a company align its products and services with market demand, leading to higher customer satisfaction and increased sales.",
+          "distractors": [
+            "Understanding consumer needs helps a company determine appropriate pricing strategies and discount structures, leading to improved profit margins and reduced inventory carrying costs.",
+            "Understanding consumer needs helps a company comply with regulatory requirements and industry standards, leading to reduced legal liability and improved corporate governance.",
+            "Understanding consumer needs helps a company optimize its supply chain and production schedules, leading to lower manufacturing costs and improved operational efficiency."
+          ]
+        },
+        {
+          "id": "m3q3",
+          "question": "How do you project cash budgets and statements of earnings?",
+          "answer": "Cash budgets are projected by estimating future cash inflows and outflows, while statements of earnings (income statements) are projected by forecasting revenues and expenses over a specified period.",
+          "distractors": [
+            "Cash budgets are projected by forecasting revenues and expenses using accrual accounting, while statements of earnings are projected by estimating actual cash receipts and payments over a specified period.",
+            "Cash budgets are projected by analyzing historical financial ratios and trends, while statements of earnings are projected by comparing current performance to industry benchmarks and competitors.",
+            "Cash budgets are projected by calculating break-even points and margin of safety, while statements of earnings are projected by determining optimal pricing strategies and cost structures."
+          ]
+        },
+        {
+          "id": "m3q4",
+          "question": "What is the margin of safety, and how is it calculated?",
+          "answer": "The margin of safety is the difference between actual or projected sales and the break-even sales level. It indicates how much sales can drop before a company incurs a loss.",
+          "distractors": [
+            "The margin of safety is the difference between total revenue and total variable costs. It indicates the contribution margin available to cover fixed costs and generate profit.",
+            "The margin of safety is the difference between current assets and current liabilities. It indicates the company's ability to meet short-term obligations and maintain liquidity.",
+            "The margin of safety is the difference between budgeted sales and actual sales. It indicates the accuracy of management's forecasting and planning processes."
+          ]
+        },
+        {
+          "id": "m3q5",
+          "question": "How do you decide whether to launch a business if a government grant is not approved?",
+          "answer": "The decision would be based on the projected financials, including cash flow, profitability, and the availability of alternative funding sources. A business might still launch if it can operate profitably without the grant.",
+          "distractors": [
+            "The decision would be based on market research and competitive analysis, including customer demand, industry trends, and competitor strategies. A business might still launch if market conditions are favorable regardless of funding.",
+            "The decision would be based on the company's core capabilities and strategic positioning, including technology, talent, and market access. A business might still launch if it has strong competitive advantages despite limited funding.",
+            "The decision would be based on regulatory compliance and legal requirements, including permits, licenses, and industry certifications. A business might still launch if all legal obligations can be met without the grant."
+          ]
+        },
+        {
+          "id": "m3q6",
+          "question": "Why are cash and net income rarely the same at the same time?",
+          "answer": "Net income includes non-cash items such as depreciation and is affected by revenue recognition and expense matching. Net income is based on accrual-based accounting and will include deferrals and accruals. For example, we may have received cash for work we have not performed. This would increase our cash but not our revenue, and therefore, does not impact net income in that period. Cash flow, on the other hand, only reflects the actual movement of cash in and out of the business.",
+          "distractors": [
+            "Net income includes all revenue and expenses regardless of timing, while cash flow only includes revenues and expenses from the current period. Net income uses cash-based accounting while cash flow uses accrual-based accounting principles.",
+            "Net income represents the total value of assets minus liabilities at a point in time, while cash flow represents the change in equity over a period. They measure different aspects of financial position and performance.",
+            "Net income includes only operating activities and excludes financing and investing activities, while cash flow includes all three types of activities. This difference in scope causes the amounts to rarely match."
+          ]
+        },
+        {
+          "id": "m3q7",
+          "question": "What is the purpose of an income statement (statement of earnings)?",
+          "answer": "The purpose of an income statement is to show a company's financial performance over a specific period. It summarizes revenues, costs, and expenses to determine the net income or loss, helping stakeholders understand profitability and business operations.",
+          "distractors": [
+            "The purpose of an income statement is to show a company's financial position at a specific point in time. It summarizes assets, liabilities, and equity to determine the net worth, helping stakeholders evaluate financial stability.",
+            "The purpose of an income statement is to forecast a company's future cash inflows and outflows over a specific period. It estimates receipts and payments to determine liquidity needs, helping management plan for cash requirements.",
+            "The purpose of an income statement is to track a company's cash movements over a specific period. It categorizes operating, investing, and financing activities to determine net cash change, helping stakeholders assess cash generation."
+          ]
+        },
+        {
+          "id": "m3q8",
+          "question": "What is the purpose of a balance sheet (statement of financial position)?",
+          "answer": "The balance sheet provides a snapshot of a company's financial position at a specific point in time. It shows the company's assets, liabilities, and shareholders' equity, helping stakeholders evaluate the company's financial stability and capital structure.",
+          "distractors": [
+            "The balance sheet provides a summary of a company's financial performance over a specific period. It shows revenues, expenses, and net income, helping stakeholders evaluate profitability and operational efficiency.",
+            "The balance sheet provides a forecast of a company's future cash position over a specific period. It shows projected inflows, outflows, and ending cash balance, helping management plan for liquidity needs.",
+            "The balance sheet provides a record of a company's cash movements over a specific period. It shows operating, investing, and financing activities, helping stakeholders understand how cash was generated and used."
+          ]
+        },
+        {
+          "id": "m3q9",
+          "question": "What is the purpose of a cash budget?",
+          "answer": "A cash budget is used to forecast a company's cash inflows and outflows over a specific period. It helps management ensure they have enough liquidity to meet obligations, plan for future investments, and avoid cash shortages.",
+          "distractors": [
+            "A cash budget is used to record a company's actual revenues and expenses over a specific period. It helps management calculate net income, assess profitability, and prepare financial statements for stakeholders.",
+            "A cash budget is used to analyze a company's assets, liabilities, and equity at a specific point in time. It helps management evaluate financial position, determine net worth, and assess capital structure.",
+            "A cash budget is used to track a company's historical cash movements across operating, investing, and financing activities. It helps management understand past cash generation and identify trends in cash usage."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBAA_6815_StudyGuide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .stats {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .controls {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .module-selector {
+            margin-bottom: 20px;
+        }
+
+        .module-selector label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .module-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .module-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .module-btn:hover {
+            background: #f0f4ff;
+        }
+
+        .module-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #e9ecef;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #dee2e6;
+        }
+
+        .quiz-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .quiz-card.active {
+            display: block;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .question-number {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .module-tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        .weak-indicator {
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+
+        .question-text {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .answer-input {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            resize: vertical;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .correct-answer {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .correct-answer.show {
+            display: block;
+        }
+
+        .correct-answer-label {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .correct-answer-text {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .feedback-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-success {
+            background: #51cf66;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #40c057;
+        }
+
+        .btn-danger {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #fa5252;
+        }
+
+        .results-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+            text-align: center;
+        }
+
+        .results-card.active {
+            display: block;
+        }
+
+        .results-title {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .results-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .weak-areas {
+            background: #fff5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .weak-areas h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        .weak-question {
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .mode-selector {
+            margin-bottom: 20px;
+        }
+
+        .mode-selector label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .mode-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .mode-btn {
+            padding: 12px 24px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .mode-btn:hover {
+            background: #f0f4ff;
+        }
+
+        .mode-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .mode-description {
+            font-size: 0.75em;
+            opacity: 0.8;
+        }
+
+        .mc-options {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .mc-option {
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            text-align: left;
+        }
+
+        .mc-option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .mc-option.selected {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        .mc-option.correct {
+            border-color: #51cf66;
+            background: #51cf66;
+            color: white;
+        }
+
+        .mc-option.incorrect {
+            border-color: #ff6b6b;
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .mc-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .difficulty-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .difficulty-easy {
+            background: #51cf66;
+            color: white;
+        }
+
+        .difficulty-medium {
+            background: #ffd43b;
+            color: #333;
+        }
+
+        .difficulty-hard {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .study-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+            margin-bottom: 15px;
+        }
+
+        .study-card.active {
+            display: block;
+        }
+
+        .study-answer {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin-top: 20px;
+        }
+
+        .study-navigation {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .progress-indicator {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .mastery-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .mastery-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #51cf66, #40c057);
+            transition: width 0.5s ease;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+
+            .module-buttons {
+                flex-direction: column;
+            }
+
+            .module-btn {
+                min-width: 100%;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .feedback-buttons {
+                flex-direction: column;
+            }
+
+            .question-text {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>MBAA_6815_StudyGuide</h1>
+            <p class="subtitle">Active Recall Practice for Exam Preparation</p>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalQuestions">0</div>
+                    <div class="stat-label">Total Questions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="attempted">0</div>
+                    <div class="stat-label">Attempted</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="weakAreas">0</div>
+                    <div class="stat-label">Weak Areas</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls" id="controls">
+            <div class="mode-selector">
+                <label>Select Study Mode:</label>
+                <div class="mode-buttons">
+                    <button class="mode-btn active" data-mode="adaptive">
+                        <span>🎯 Adaptive</span>
+                        <span class="mode-description">MC → Open-ended</span>
+                    </button>
+                    <button class="mode-btn" data-mode="multiple-choice">
+                        <span>✓ Multiple Choice</span>
+                        <span class="mode-description">Build confidence</span>
+                    </button>
+                    <button class="mode-btn" data-mode="open-ended">
+                        <span>✍️ Open-ended</span>
+                        <span class="mode-description">Full recall</span>
+                    </button>
+                    <button class="mode-btn" data-mode="study">
+                        <span>📚 Study</span>
+                        <span class="mode-description">Browse & review</span>
+                    </button>
+                </div>
+            </div>
+            <div class="module-selector">
+                <label>Select Module(s):</label>
+                <div class="module-buttons" id="moduleButtons"></div>
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="startQuiz">Start Practice</button>
+                <button class="btn btn-secondary" id="resetProgress">Reset Progress</button>
+            </div>
+        </div>
+
+        <!-- Quiz Card -->
+        <div class="quiz-card" id="quizCard">
+            <div class="question-header">
+                <span class="question-number" id="questionNumber"></span>
+                <div>
+                    <span class="module-tag" id="moduleTag"></span>
+                    <span class="weak-indicator hidden" id="weakIndicator">Weak Area</span>
+                    <span class="difficulty-badge hidden" id="difficultyBadge"></span>
+                </div>
+            </div>
+            <div class="progress-indicator" id="progressIndicator">
+                <div>Mastery Progress</div>
+                <div class="mastery-bar">
+                    <div class="mastery-fill" id="masteryFill" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="question-text" id="questionText"></div>
+            
+            <!-- Multiple Choice Options -->
+            <div class="mc-options hidden" id="mcOptions"></div>
+            
+            <!-- Open-ended Answer Input -->
+            <textarea 
+                class="answer-input" 
+                id="answerInput" 
+                placeholder="Type your answer here..."
+            ></textarea>
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="revealAnswer">Reveal Answer</button>
+                <button class="btn btn-primary hidden" id="submitMC">Submit Answer</button>
+            </div>
+            <div class="correct-answer" id="correctAnswer">
+                <span class="correct-answer-label">Correct Answer:</span>
+                <div class="correct-answer-text" id="correctAnswerText"></div>
+                <div class="feedback-buttons">
+                    <button class="btn btn-success" id="gotItRight">I Got It Right ✓</button>
+                    <button class="btn btn-danger" id="needReview">Need Review ✗</button>
+                </div>
+            </div>
+            <div class="action-buttons" style="margin-top: 20px;">
+                <button class="btn btn-secondary" id="nextQuestion">Next Question</button>
+                <button class="btn btn-secondary" id="endQuiz">End Practice</button>
+            </div>
+        </div>
+
+        <!-- Study Mode Card -->
+        <div class="study-card" id="studyCard">
+            <div class="question-header">
+                <span class="question-number" id="studyQuestionNumber"></span>
+                <span class="module-tag" id="studyModuleTag"></span>
+            </div>
+            <div class="question-text" id="studyQuestionText"></div>
+            <div class="study-answer">
+                <span class="correct-answer-label">Answer:</span>
+                <div class="correct-answer-text" id="studyAnswerText"></div>
+            </div>
+            <div class="study-navigation">
+                <button class="btn btn-secondary" id="studyPrev">← Previous</button>
+                <button class="btn btn-secondary" id="studyNext">Next →</button>
+                <button class="btn btn-secondary" id="endStudy">End Study</button>
+            </div>
+        </div>
+
+        <!-- Results Card -->
+        <div class="results-card" id="resultsCard">
+            <h2 class="results-title">Practice Session Complete!</h2>
+            <div class="results-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="resultTotal">0</div>
+                    <div class="stat-label">Questions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="resultCorrect">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="resultWeak">0</div>
+                    <div class="stat-label">Need Review</div>
+                </div>
+            </div>
+            <div class="weak-areas" id="weakAreasSection"></div>
+            <div class="action-buttons" style="margin-top: 30px;">
+                <button class="btn btn-primary" id="practiceAgain">Practice Again</button>
+                <button class="btn btn-secondary" id="focusWeak">Focus on Weak Areas</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Application State
+        let studyData = null;
+        let currentQuiz = [];
+        let currentQuestionIndex = 0;
+        let currentMode = 'adaptive';
+        let selectedMCOption = null;
+        let sessionStats = {
+            correct: 0,
+            needReview: 0,
+            total: 0
+        };
+        let progress = {
+            attempted: new Set(),
+            weak: new Set(),
+            mastery: {} // Track correct answers per question for adaptive mode
+        };
+
+        // Load progress from localStorage
+        function loadProgress() {
+            const saved = localStorage.getItem('MBAA_6815_Progress');
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                progress.attempted = new Set(parsed.attempted || []);
+                progress.weak = new Set(parsed.weak || []);
+                progress.mastery = parsed.mastery || {};
+            }
+        }
+
+        // Save progress to localStorage
+        function saveProgress() {
+            localStorage.setItem('MBAA_6815_Progress', JSON.stringify({
+                attempted: Array.from(progress.attempted),
+                weak: Array.from(progress.weak),
+                mastery: progress.mastery
+            }));
+            updateStats();
+        }
+
+        // Load study data
+        async function loadStudyData() {
+            try {
+                const response = await fetch('study-data.json');
+                studyData = await response.json();
+                initializeApp();
+            } catch (error) {
+                alert('Error loading study data. Make sure study-data.json is in the same folder.');
+                console.error(error);
+            }
+        }
+
+        // Initialize the application
+        function initializeApp() {
+            loadProgress();
+            renderModuleButtons();
+            updateStats();
+            attachEventListeners();
+        }
+
+        // Render module selection buttons
+        function renderModuleButtons() {
+            const container = document.getElementById('moduleButtons');
+            container.innerHTML = '';
+
+            // Add "All Modules" button
+            const allBtn = document.createElement('button');
+            allBtn.className = 'module-btn active';
+            allBtn.textContent = 'All Modules';
+            allBtn.dataset.moduleId = 'all';
+            container.appendChild(allBtn);
+
+            // Add individual module buttons
+            studyData.modules.forEach(module => {
+                const btn = document.createElement('button');
+                btn.className = 'module-btn';
+                btn.textContent = `Module ${module.id}`;
+                btn.dataset.moduleId = module.id;
+                container.appendChild(btn);
+            });
+
+            // Add click handlers
+            container.querySelectorAll('.module-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    container.querySelectorAll('.module-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        }
+
+        // Update statistics display
+        function updateStats() {
+            const totalQuestions = studyData.modules.reduce((sum, m) => sum + m.questions.length, 0);
+            document.getElementById('totalQuestions').textContent = totalQuestions;
+            document.getElementById('attempted').textContent = progress.attempted.size;
+            document.getElementById('weakAreas').textContent = progress.weak.size;
+        }
+
+        // Get selected modules
+        function getSelectedModules() {
+            const activeBtn = document.querySelector('.module-btn.active');
+            const moduleId = activeBtn.dataset.moduleId;
+
+            if (moduleId === 'all') {
+                return studyData.modules;
+            } else {
+                return studyData.modules.filter(m => m.id === parseInt(moduleId));
+            }
+        }
+
+        // Get selected mode
+        function getSelectedMode() {
+            const activeBtn = document.querySelector('.mode-btn.active');
+            return activeBtn ? activeBtn.dataset.mode : 'adaptive';
+        }
+
+        // Generate wrong answers for multiple choice
+        function generateWrongAnswers(question, allAnswers) {
+            // If question has custom distractors, use those
+            if (question.distractors && question.distractors.length >= 3) {
+                return question.distractors.slice(0, 3);
+            }
+            
+            // Otherwise, generate plausible distractors
+            const correctAnswer = question.answer;
+            const distractors = [];
+            
+            // Strategy 1: Find answers from same module (more related content)
+            const sameModuleAnswers = currentQuiz
+                .filter(q => q.moduleName === question.moduleName && q.answer !== correctAnswer)
+                .map(q => q.answer);
+            
+            if (sameModuleAnswers.length >= 3) {
+                const shuffled = sameModuleAnswers.sort(() => Math.random() - 0.5);
+                return shuffled.slice(0, 3);
+            }
+            
+            // Strategy 2: Mix same module with other answers
+            const otherAnswers = allAnswers.filter(a => a !== correctAnswer);
+            const combined = [...sameModuleAnswers, ...otherAnswers];
+            const shuffled = combined.sort(() => Math.random() - 0.5);
+            
+            // Remove duplicates and take first 3
+            const unique = [...new Set(shuffled)];
+            return unique.slice(0, 3);
+        }
+
+        // Determine question difficulty based on mastery
+        function getQuestionDifficulty(questionId) {
+            const mastery = progress.mastery[questionId] || 0;
+            if (mastery >= 2) return 'easy'; // Answered correctly 2+ times
+            if (mastery === 1) return 'medium'; // Answered correctly once
+            return 'hard'; // Never answered correctly or in weak areas
+        }
+
+        // Should show multiple choice based on mode and mastery
+        function shouldShowMultipleChoice(questionId) {
+            if (currentMode === 'multiple-choice') return true;
+            if (currentMode === 'open-ended') return false;
+            if (currentMode === 'study') return false;
+            
+            // Adaptive mode: show MC for hard questions
+            const difficulty = getQuestionDifficulty(questionId);
+            return difficulty === 'hard' || difficulty === 'medium';
+        }
+
+        // Start quiz
+        function startQuiz(focusWeak = false) {
+            currentMode = getSelectedMode();
+            
+            // Study mode uses different interface
+            if (currentMode === 'study') {
+                startStudyMode();
+                return;
+            }
+
+            const selectedModules = getSelectedModules();
+            currentQuiz = [];
+
+            selectedModules.forEach(module => {
+                module.questions.forEach(q => {
+                    if (focusWeak) {
+                        if (progress.weak.has(q.id)) {
+                            currentQuiz.push({ ...q, moduleName: module.name });
+                        }
+                    } else {
+                        currentQuiz.push({ ...q, moduleName: module.name });
+                    }
+                });
+            });
+
+            if (currentQuiz.length === 0) {
+                alert(focusWeak ? 'No weak areas found! Great job!' : 'No questions available for selected module(s).');
+                return;
+            }
+
+            // Shuffle questions
+            currentQuiz.sort(() => Math.random() - 0.5);
+
+            // Reset session stats
+            sessionStats = { correct: 0, needReview: 0, total: currentQuiz.length };
+            currentQuestionIndex = 0;
+
+            // Show quiz interface
+            document.getElementById('controls').style.display = 'none';
+            document.getElementById('quizCard').classList.add('active');
+            document.getElementById('resultsCard').classList.remove('active');
+            document.getElementById('studyCard').classList.remove('active');
+
+            showQuestion();
+        }
+
+        // Show current question
+        function showQuestion() {
+            if (currentQuestionIndex >= currentQuiz.length) {
+                showResults();
+                return;
+            }
+
+            const question = currentQuiz[currentQuestionIndex];
+            const showMC = shouldShowMultipleChoice(question.id);
+            
+            document.getElementById('questionNumber').textContent = 
+                `Question ${currentQuestionIndex + 1} of ${currentQuiz.length}`;
+            document.getElementById('moduleTag').textContent = question.moduleName;
+            document.getElementById('questionText').textContent = question.question;
+            document.getElementById('correctAnswer').classList.remove('show');
+            
+            // Show weak indicator if applicable
+            const weakIndicator = document.getElementById('weakIndicator');
+            if (progress.weak.has(question.id)) {
+                weakIndicator.classList.remove('hidden');
+            } else {
+                weakIndicator.classList.add('hidden');
+            }
+
+            // Show difficulty badge in adaptive mode
+            const difficultyBadge = document.getElementById('difficultyBadge');
+            if (currentMode === 'adaptive') {
+                const difficulty = getQuestionDifficulty(question.id);
+                difficultyBadge.className = `difficulty-badge difficulty-${difficulty}`;
+                difficultyBadge.textContent = difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
+                difficultyBadge.classList.remove('hidden');
+            } else {
+                difficultyBadge.classList.add('hidden');
+            }
+
+            // Update mastery progress bar
+            const mastery = progress.mastery[question.id] || 0;
+            const masteryPercent = Math.min((mastery / 3) * 100, 100);
+            document.getElementById('masteryFill').style.width = `${masteryPercent}%`;
+
+            // Show/hide appropriate input method
+            const mcOptions = document.getElementById('mcOptions');
+            const answerInput = document.getElementById('answerInput');
+            const revealBtn = document.getElementById('revealAnswer');
+            const submitBtn = document.getElementById('submitMC');
+
+            if (showMC) {
+                // Multiple choice mode
+                mcOptions.classList.remove('hidden');
+                answerInput.classList.add('hidden');
+                revealBtn.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+                renderMultipleChoice(question);
+            } else {
+                // Open-ended mode
+                mcOptions.classList.add('hidden');
+                answerInput.classList.remove('hidden');
+                answerInput.value = '';
+                revealBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+            }
+
+            // Mark as attempted
+            progress.attempted.add(question.id);
+            saveProgress();
+        }
+
+        // Fisher-Yates shuffle for truly random order
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        // Render multiple choice options
+        function renderMultipleChoice(question) {
+            const container = document.getElementById('mcOptions');
+            container.innerHTML = '';
+            selectedMCOption = null;
+
+            // Get all answers from current quiz
+            const allAnswers = currentQuiz.map(q => q.answer);
+            const wrongAnswers = generateWrongAnswers(question, allAnswers);
+            const options = shuffleArray([question.answer, ...wrongAnswers]);
+
+            options.forEach((option, index) => {
+                const div = document.createElement('div');
+                div.className = 'mc-option';
+                div.textContent = option;
+                div.dataset.answer = option;
+                div.addEventListener('click', () => selectMCOption(div, option));
+                container.appendChild(div);
+            });
+        }
+
+        // Select multiple choice option
+        function selectMCOption(element, answer) {
+            // Remove previous selection
+            document.querySelectorAll('.mc-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            element.classList.add('selected');
+            selectedMCOption = answer;
+        }
+
+        // Submit multiple choice answer
+        function submitMCAnswer() {
+            if (!selectedMCOption) {
+                alert('Please select an answer first.');
+                return;
+            }
+
+            const question = currentQuiz[currentQuestionIndex];
+            const isCorrect = selectedMCOption === question.answer;
+
+            // Show feedback
+            document.querySelectorAll('.mc-option').forEach(opt => {
+                opt.classList.add('disabled');
+                if (opt.dataset.answer === question.answer) {
+                    opt.classList.add('correct');
+                } else if (opt.dataset.answer === selectedMCOption && !isCorrect) {
+                    opt.classList.add('incorrect');
+                }
+            });
+
+            // Update mastery
+            if (isCorrect) {
+                progress.mastery[question.id] = (progress.mastery[question.id] || 0) + 1;
+                progress.weak.delete(question.id);
+                sessionStats.correct++;
+            } else {
+                progress.mastery[question.id] = 0;
+                progress.weak.add(question.id);
+                sessionStats.needReview++;
+            }
+
+            saveProgress();
+
+            // Show correct answer
+            document.getElementById('correctAnswerText').textContent = question.answer;
+            document.getElementById('correctAnswer').classList.add('show');
+            
+            // Hide submit button, show next
+            document.getElementById('submitMC').classList.add('hidden');
+        }
+
+        // Extract key concepts from answer
+        function extractKeywords(text) {
+            // Remove common words and extract meaningful terms
+            const commonWords = new Set(['the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 
+                'of', 'with', 'by', 'from', 'as', 'is', 'are', 'was', 'were', 'be', 'been', 'being',
+                'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'should', 'could', 'may',
+                'might', 'must', 'can', 'such', 'this', 'that', 'these', 'those', 'it', 'its', 'they',
+                'their', 'them', 'which', 'who', 'what', 'where', 'when', 'why', 'how']);
+            
+            const words = text.toLowerCase()
+                .replace(/[^\w\s-]/g, ' ')
+                .split(/\s+/)
+                .filter(word => word.length > 3 && !commonWords.has(word));
+            
+            // Extract phrases (2-3 word combinations that appear important)
+            const phrases = [];
+            const sentences = text.split(/[.!?]+/);
+            sentences.forEach(sentence => {
+                const match = sentence.match(/\b([a-z]+-[a-z]+|[a-z]+ [a-z]+(?:\s+[a-z]+)?)\b/gi);
+                if (match) {
+                    phrases.push(...match.map(p => p.toLowerCase().trim()));
+                }
+            });
+            
+            return {
+                words: [...new Set(words)],
+                phrases: [...new Set(phrases.filter(p => p.length > 5))]
+            };
+        }
+
+        // Calculate similarity between user answer and correct answer
+        function gradeAnswer(userAnswer, correctAnswer) {
+            if (!userAnswer || userAnswer.trim().length === 0) {
+                return {
+                    score: 0,
+                    feedback: 'No answer provided',
+                    matchedConcepts: [],
+                    missedConcepts: []
+                };
+            }
+
+            const userText = userAnswer.toLowerCase();
+            const correctText = correctAnswer.toLowerCase();
+            
+            // Extract keywords and phrases
+            const correctKeywords = extractKeywords(correctAnswer);
+            const userKeywords = extractKeywords(userAnswer);
+            
+            // Check for matched concepts (phrases first, then words)
+            const allConcepts = [...correctKeywords.phrases, ...correctKeywords.words.slice(0, 10)];
+            const matchedConcepts = [];
+            const missedConcepts = [];
+            
+            allConcepts.forEach(concept => {
+                const conceptWords = concept.split(/\s+/);
+                const allWordsPresent = conceptWords.every(word => 
+                    userText.includes(word) || userKeywords.words.includes(word)
+                );
+                
+                if (allWordsPresent || userText.includes(concept)) {
+                    matchedConcepts.push(concept);
+                } else {
+                    missedConcepts.push(concept);
+                }
+            });
+            
+            // Calculate score
+            const totalConcepts = allConcepts.length;
+            const matchedCount = matchedConcepts.length;
+            const score = totalConcepts > 0 ? Math.round((matchedCount / totalConcepts) * 100) : 0;
+            
+            // Generate feedback
+            let feedback = '';
+            if (score >= 90) {
+                feedback = 'Excellent! You covered all key concepts.';
+            } else if (score >= 75) {
+                feedback = 'Very good! You got most of the important points.';
+            } else if (score >= 60) {
+                feedback = 'Good start, but review the concepts you missed.';
+            } else if (score >= 40) {
+                feedback = 'Partial understanding. Focus on the missed concepts.';
+            } else if (score > 0) {
+                feedback = 'You touched on some points, but need more detail.';
+            } else {
+                feedback = 'Your answer doesn\'t match the key concepts. Review the material.';
+            }
+            
+            return {
+                score,
+                feedback,
+                matchedConcepts: matchedConcepts.slice(0, 5),
+                missedConcepts: missedConcepts.slice(0, 5)
+            };
+        }
+
+        // Reveal answer (for open-ended)
+        function revealAnswer() {
+            const question = currentQuiz[currentQuestionIndex];
+            const userAnswer = document.getElementById('answerInput').value;
+            
+            // Grade the answer
+            const grading = gradeAnswer(userAnswer, question.answer);
+            
+            // Display correct answer
+            const correctAnswerDiv = document.getElementById('correctAnswer');
+            const correctAnswerText = document.getElementById('correctAnswerText');
+            
+            let gradingHTML = '';
+            if (userAnswer.trim().length > 0) {
+                gradingHTML = `
+                    <div style="background: ${grading.score >= 70 ? '#e7f5ff' : '#fff5f5'}; 
+                                padding: 15px; border-radius: 8px; margin-bottom: 15px;
+                                border-left: 4px solid ${grading.score >= 70 ? '#667eea' : '#ff6b6b'};">
+                        <div style="font-weight: 600; color: ${grading.score >= 70 ? '#667eea' : '#ff6b6b'}; 
+                                    font-size: 1.1em; margin-bottom: 8px;">
+                            Your Score: ${grading.score}%
+                        </div>
+                        <div style="color: #666; margin-bottom: 10px;">${grading.feedback}</div>
+                        ${grading.matchedConcepts.length > 0 ? `
+                            <div style="margin-top: 10px;">
+                                <strong style="color: #51cf66;">✓ You mentioned:</strong>
+                                <div style="color: #666; margin-top: 5px;">
+                                    ${grading.matchedConcepts.map(c => `<span style="background: #e7f5ff; padding: 3px 8px; 
+                                        border-radius: 4px; margin: 2px; display: inline-block; font-size: 0.9em;">${c}</span>`).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                        ${grading.missedConcepts.length > 0 ? `
+                            <div style="margin-top: 10px;">
+                                <strong style="color: #ff6b6b;">✗ Key concepts to review:</strong>
+                                <div style="color: #666; margin-top: 5px;">
+                                    ${grading.missedConcepts.map(c => `<span style="background: #fff5f5; padding: 3px 8px; 
+                                        border-radius: 4px; margin: 2px; display: inline-block; font-size: 0.9em;">${c}</span>`).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }
+            
+            correctAnswerText.innerHTML = gradingHTML + `<div style="color: #333; line-height: 1.6;">${question.answer}</div>`;
+            correctAnswerDiv.classList.add('show');
+        }
+
+        // Mark as correct
+        function markCorrect() {
+            const question = currentQuiz[currentQuestionIndex];
+            sessionStats.correct++;
+            progress.mastery[question.id] = (progress.mastery[question.id] || 0) + 1;
+            progress.weak.delete(question.id);
+            saveProgress();
+            nextQuestion();
+        }
+
+        // Mark as needs review
+        function markNeedReview() {
+            const question = currentQuiz[currentQuestionIndex];
+            sessionStats.needReview++;
+            progress.mastery[question.id] = 0;
+            progress.weak.add(question.id);
+            saveProgress();
+            nextQuestion();
+        }
+
+        // Next question
+        function nextQuestion() {
+            currentQuestionIndex++;
+            showQuestion();
+        }
+
+        // Start study mode
+        function startStudyMode() {
+            const selectedModules = getSelectedModules();
+            currentQuiz = [];
+
+            selectedModules.forEach(module => {
+                module.questions.forEach(q => {
+                    currentQuiz.push({ ...q, moduleName: module.name });
+                });
+            });
+
+            if (currentQuiz.length === 0) {
+                alert('No questions available for selected module(s).');
+                return;
+            }
+
+            currentQuestionIndex = 0;
+
+            // Show study interface
+            document.getElementById('controls').style.display = 'none';
+            document.getElementById('quizCard').classList.remove('active');
+            document.getElementById('resultsCard').classList.remove('active');
+            document.getElementById('studyCard').classList.add('active');
+
+            showStudyQuestion();
+        }
+
+        // Show study mode question
+        function showStudyQuestion() {
+            const question = currentQuiz[currentQuestionIndex];
+            
+            document.getElementById('studyQuestionNumber').textContent = 
+                `Question ${currentQuestionIndex + 1} of ${currentQuiz.length}`;
+            document.getElementById('studyModuleTag').textContent = question.moduleName;
+            document.getElementById('studyQuestionText').textContent = question.question;
+            document.getElementById('studyAnswerText').textContent = question.answer;
+
+            // Update button states
+            document.getElementById('studyPrev').disabled = currentQuestionIndex === 0;
+            document.getElementById('studyNext').disabled = currentQuestionIndex === currentQuiz.length - 1;
+        }
+
+        // Study mode navigation
+        function studyPrev() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showStudyQuestion();
+            }
+        }
+
+        function studyNext() {
+            if (currentQuestionIndex < currentQuiz.length - 1) {
+                currentQuestionIndex++;
+                showStudyQuestion();
+            }
+        }
+
+        function endStudy() {
+            returnToMenu();
+        }
+
+        // Show results
+        function showResults() {
+            document.getElementById('quizCard').classList.remove('active');
+            document.getElementById('resultsCard').classList.add('active');
+
+            document.getElementById('resultTotal').textContent = sessionStats.total;
+            document.getElementById('resultCorrect').textContent = sessionStats.correct;
+            document.getElementById('resultWeak').textContent = sessionStats.needReview;
+
+            // Show weak areas
+            const weakSection = document.getElementById('weakAreasSection');
+            if (progress.weak.size > 0) {
+                weakSection.innerHTML = '<h3>Questions to Review:</h3>';
+                const weakQuestions = currentQuiz.filter(q => progress.weak.has(q.id));
+                weakQuestions.forEach(q => {
+                    const div = document.createElement('div');
+                    div.className = 'weak-question';
+                    div.textContent = q.question;
+                    weakSection.appendChild(div);
+                });
+            } else {
+                weakSection.innerHTML = '<h3 style="color: #51cf66;">No weak areas - excellent work!</h3>';
+            }
+        }
+
+        // End quiz early
+        function endQuiz() {
+            if (confirm('Are you sure you want to end this practice session?')) {
+                showResults();
+            }
+        }
+
+        // Return to main menu
+        function returnToMenu() {
+            document.getElementById('controls').style.display = 'block';
+            document.getElementById('quizCard').classList.remove('active');
+            document.getElementById('studyCard').classList.remove('active');
+            document.getElementById('resultsCard').classList.remove('active');
+            updateStats();
+        }
+
+        // Reset progress
+        function resetProgress() {
+            if (confirm('This will reset all your progress. Are you sure?')) {
+                progress = { attempted: new Set(), weak: new Set(), mastery: {} };
+                localStorage.removeItem('MBAA_6815_Progress');
+                updateStats();
+                alert('Progress reset successfully!');
+            }
+        }
+
+        // Attach event listeners
+        function attachEventListeners() {
+            // Mode selection
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+
+            // Main controls
+            document.getElementById('startQuiz').addEventListener('click', () => startQuiz(false));
+            document.getElementById('resetProgress').addEventListener('click', resetProgress);
+            
+            // Quiz controls
+            document.getElementById('revealAnswer').addEventListener('click', revealAnswer);
+            document.getElementById('submitMC').addEventListener('click', submitMCAnswer);
+            document.getElementById('gotItRight').addEventListener('click', markCorrect);
+            document.getElementById('needReview').addEventListener('click', markNeedReview);
+            document.getElementById('nextQuestion').addEventListener('click', nextQuestion);
+            document.getElementById('endQuiz').addEventListener('click', endQuiz);
+            
+            // Study mode controls
+            document.getElementById('studyPrev').addEventListener('click', studyPrev);
+            document.getElementById('studyNext').addEventListener('click', studyNext);
+            document.getElementById('endStudy').addEventListener('click', endStudy);
+            
+            // Results controls
+            document.getElementById('practiceAgain').addEventListener('click', returnToMenu);
+            document.getElementById('focusWeak').addEventListener('click', () => {
+                returnToMenu();
+                setTimeout(() => startQuiz(true), 100);
+            });
+        }
+
+        // Initialize on page load
+        loadStudyData();
+    </script>
+</body>
+</html>
